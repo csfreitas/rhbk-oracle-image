@@ -10,8 +10,7 @@ COPY --chown=keycloak:keycloak --chmod=644 spi/keycloak-metrics-spi-7.0.0.jar /o
 ENV KC_HEALTH_ENABLED=true \
     KC_METRICS_ENABLED=true \
     TZ='America/Sao_Paulo' \
-    KC_DB=postgres \
-    KC_FEATURES_DISABLED="opentelemetry"
+    KC_DB=postgres 
 
 RUN /opt/keycloak/bin/kc.sh build
 
@@ -19,4 +18,4 @@ FROM registry.redhat.io/rhbk/keycloak-rhel9:26.0
 
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--optimized"]
