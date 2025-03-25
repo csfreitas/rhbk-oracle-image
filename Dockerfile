@@ -11,7 +11,7 @@ ENV KC_HEALTH_ENABLED=true \
     KC_METRICS_ENABLED=true \
     TZ='America/Sao_Paulo' \
     KC_DB=postgres \
-    KC_FEATURE_DIABLED="opentelemetry"
+    KC_FEATURES_DISABLED="opentelemetry"
 
 RUN /opt/keycloak/bin/kc.sh build
 
